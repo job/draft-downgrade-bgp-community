@@ -87,7 +87,7 @@ version="3">
         It should also be noted that approach relies on there being at least some unused capacity during the attack.
       </t>
       <t>
-        This document specifies a standard well-known BGP community value, describes operational considerations, and contains configuration examples.
+        This document specifies a standard well-known BGP community value for use in the global Internet routing system, describes operational considerations for mitigating through downgrading, and for illustration purposes contains some configuration examples.
       </t>
 		
       <section anchor="reqs-lang">
