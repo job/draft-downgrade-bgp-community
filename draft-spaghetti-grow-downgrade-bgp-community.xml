@@ -88,11 +88,11 @@ LE-PHB <xref target="RFC8622"/>
     <section anchor="community">
       <name>The DOWNGRADE Community</name>
       <t>
-        This document defines the use of a new well-known BGP transitive community, DOWNGRADE.
+        This document defines the use of a new well-known BGP transitive community, <tt>DOWNGRADE</tt>.
       </t>
       <t>
         The semantics of this community allow a network to interpret the presence of this community as an advisory qualification to treat any traffic being sent towards the tagged prefix with lower precedence.
-        That is, in the case of congestion, "DOWNGRADE" tagged traffic <bcp14>SHOULD</bcp14> be dropped prior to dropping any other traffic.
+        That is, in the case of congestion, <tt>DOWNGRADE</tt> tagged traffic <bcp14>SHOULD</bcp14> be dropped prior to dropping any other traffic.
       </t>
     </section>
 
