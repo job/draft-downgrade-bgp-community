@@ -7,19 +7,19 @@
  <!ENTITY zwsp   "&#8203;">
  <!ENTITY nbhy   "&#8209;">
  <!ENTITY wj     "&#8288;">
-]> 
+]>
 
-<rfc xmlns:xi="http://www.w3.org/2001/XInclude" 
-category="info" 
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude"
+category="info"
 docName="draft-spaghetti-grow-downgrade-bgp-community-00"
-ipr="trust200902" 
-xml:lang="en" 
-sortRefs="true" 
-submissionType="IETF" 
-consensus="true" 
+ipr="trust200902"
+xml:lang="en"
+sortRefs="true"
+submissionType="IETF"
+consensus="true"
 updates=""
 obsoletes=""
-symRefs="true" 
+symRefs="true"
 tocInclude="true"
 version="3">
 
@@ -54,7 +54,7 @@ version="3">
     <date/>
 
     <area>Operations and Management Area (OPS)</area>
-    <workgroup>GROW</workgroup> 
+    <workgroup>GROW</workgroup>
 
     <keyword>DDoS</keyword>
     <keyword>BGP</keyword>
@@ -72,9 +72,7 @@ version="3">
     <section anchor="intro">
       <name>Introduction</name>
       <t>
-        
-LE-PHB <xref target="RFC8622"/>
-
+        Mitigation of Denial of Service (DoS) attacks continue to pose challenges for network operators...
       </t>
 		
       <section anchor="reqs-lang">
@@ -99,7 +97,11 @@ LE-PHB <xref target="RFC8622"/>
     <section anchor="ops">
       <name>Operational Considerations</name>
       <t>
-        ...
+        Operators <bcp14>SHOULD</bcp14> mark downgraded traffic with Differentiated Services Code Point (DSCP) Class Selector 1 (<tt>CS1</tt>) at the egress to the next network domain.
+        Such marking can help the defender in monitoring whether a lower-effort forwarding priority was applied.
+      </t>
+      <t>
+        The CS1 DSCP <tt>'000001'</tt> marking is also known as the Lower-Effort (LE) DSCP marking, see <xref target="RFC8622"/> for more considerations on a Lower-Effort Per-Hop Behavior (LE PHB) .
       </t>
     </section>
 
