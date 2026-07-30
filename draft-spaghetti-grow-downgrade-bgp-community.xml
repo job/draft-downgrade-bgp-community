@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- draft submitted in xml v3 -->
+
+<!DOCTYPE rfc [
+ <!ENTITY nbsp    "&#160;">
+ <!ENTITY zwsp   "&#8203;">
+ <!ENTITY nbhy   "&#8209;">
+ <!ENTITY wj     "&#8288;">
+]> 
+
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude" 
+category="info" 
+docName="draft-spaghetti-grow-downgrade-bgp-community-00"
+ipr="trust200902" 
+xml:lang="en" 
+sortRefs="true" 
+submissionType="IETF" 
+consensus="true" 
+updates=""
+obsoletes=""
+symRefs="true" 
+tocInclude="true"
+version="3">
+
+  <front>
+    <title abbrev="DOWNGRADE BGP Community">
+      The DOWNGRADE BGP Community for Denial-of-Service Attack Mitigation
+    </title>
+
+    <author fullname="Job Snijders" initials="J." surname="Snijders">
+      <organization abbrev="BSD">BSD Software Development</organization>
+      <address>
+        <postal>
+         <postalLine>Amsterdam</postalLine>
+         <postalLine>The Netherlands</postalLine>
+        </postal>
+        <email>job@bsd.nl</email>
+        <uri>https://www.bsd.nl</uri>
+      </address>
+    </author>
+
+    <author fullname="Saku Ytti" initials="S." surname="Ytti">
+      <organization>NTT DATA</organization>
+      <address>
+        <postal>
+         <postalLine>Cyprus</postalLine>
+        </postal>
+        <email>saku@ntt.net</email>
+        <uri>https://www.gin.ntt.net/</uri>
+      </address>
+    </author>
+
+    <date/>
+
+    <area>Operations and Management Area (OPS)</area>
+    <workgroup>GROW</workgroup> 
+
+    <keyword>DDoS</keyword>
+    <keyword>BGP</keyword>
+
+    <abstract>
+      <t>
+        This document outlines a method to mitigate Denial of Service (DoS) attacks by using a well-known BGP community named "DOWNGRADE" as signal to neighboring networks to treat traffic destined towards "DOWNGRADE" tagged IP prefixes with low precedence.
+        The "downgrade" strategy offers an appealing alternative to Remote Triggered Blackhole (RTBH) filtering, because RTBH filtering completes the DoS attack and hampers the defender's ability to monitor whether the attack is still ongoing.
+      </t>
+    </abstract>
+  </front>
+
+  <middle>
+
+    <section anchor="intro">
+      <name>Introduction</name>
+      <t>
+
+LE-PHB <xref target="RFC8622"/>
+
+      </t>
+		
+      <section anchor="reqs-lang">
+        <name>Requirements Language</name>
+        <t>
+          The key words "<bcp14>MUST</bcp14>", "<bcp14>MUST NOT</bcp14>", "<bcp14>REQUIRED</bcp14>", "<bcp14>SHALL</bcp14>", "<bcp14>SHALL NOT</bcp14>", "<bcp14>SHOULD</bcp14>", "<bcp14>SHOULD NOT</bcp14>", "<bcp14>RECOMMENDED</bcp14>", "<bcp14>NOT RECOMMENDED</bcp14>", "<bcp14>MAY</bcp14>", and "<bcp14>OPTIONAL</bcp14>" in this document are to be interpreted as described in BCP&nbsp;14 <xref target="RFC2119"/> <xref target="RFC8174"/> when, and only when, they appear in all capitals, as shown here.
+        </t>
+       </section>
+
+      <section anchor="Related">
+        <name>Related Work</name>
+        <t>
+        </t>
+      </section>
+
+    </section>
+
+    <section>
+      <name>Updates to RFC ...</name>
+      <t>
+        ...
+      </t>
+    </section>
+
+    <section anchor="security">
+      <name>Security Considerations</name>
+      <t>
+        ...
+      </t>
+    </section>
+
+    <section anchor="iana">
+      <name>IANA Considerations</name>
+      <t>
+        Through this document IANA is requested to register in the "BGP Well-known Communities" registry as follows:
+      </t>
+      <t>
+        <tt>DOWNGRADE (= 0xFFFFTBD)</tt>
+      </t>
+    </section>
+
+  </middle>
+
+  <back>
+    <references>
+      <name>References</name>
+      <references>
+        <name>Normative References</name>
+	<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
+	<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
+      </references>
+
+      <references>
+        <name>Informative References</name>
+	<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8622.xml"/>
+      </references>
+
+    </references>
+
+    <section anchor="acknowledgements" numbered="false">
+      <name>Acknowledgements</name>
+      <t>
+        The authors wish to thank <contact fullname="..."/>,
+        <contact fullname="..."/>,
+        and
+        <contact fullname="..."/>
+        for their review and feedback.
+      </t>
+    </section>
+
+  </back>
+</rfc>
