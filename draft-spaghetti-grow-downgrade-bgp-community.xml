@@ -108,7 +108,11 @@ version="3">
     <section anchor="security">
       <name>Security Considerations</name>
       <t>
-        ...
+        DoS attacks are pervasive and happen frequently in network operations.
+        Traditional mitigation techniques relying on traffic filtering tend to throw the baby out with the bathwater.
+      </t>
+      <t>
+        XXX: something about ensuring that the neighboring network is authorized to announce the DOWNGRADE tagged prefix
       </t>
     </section>
 
