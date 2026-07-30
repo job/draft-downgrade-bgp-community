@@ -72,7 +72,22 @@ version="3">
     <section anchor="intro">
       <name>Introduction</name>
       <t>
-        Mitigation of Denial of Service (DoS) attacks continue to pose challenges for network operators...
+        Denial of Service (DoS) attacks are a common occurance and effective mitigation continues to pose a challenge to network operators globally.
+        The traditional approach of signaling neighboring networks to not send <em>any</em> traffic towards the IP prefix under duress poses a significant dilemma: without filtering the destination network segment as a whole suffers from attack, conversely, the use of RTBH filtering itself is an extension of the attack as it causes reachability issues for the beset destination.
+        Even worse, reachability issues often persist beyond the actual attack, because RTBH filtering itself negatively impacts the defender's ability to observe the presence of attack traffic.
+        From a timing perspective it is hard to use RTBH filtering with tactical precision.
+      </t>
+      <t>
+        This document proposes an different approach: rather than defenders requesting neighboring networks to discard traffic wholesale, defenders can request for deprioritization of selected traffic in the forwarding-plane.
+        The goal is to protect all other packet traffic from competition with the attack volume aggregate while not completely banning attack traffic from the network.
+        The approach allows networks to protect themselves from attack traffic by providing relative preferential treatment to other traffic aggregates.
+      </t>
+      <t>
+        The aforementioned "downgrade" mitigation strategy does not fully resolve DoS attacks as the root cause remains unaddressed, but it might be a better practise than RTBH filtering.
+        It should also be noted that approach relies on there being at least some unused capacity during the attack.
+      </t>
+      <t>
+        This document specifies a standard well-known BGP community value, describes operational considerations, and contains configuration examples.
       </t>
 		
       <section anchor="reqs-lang">
