@@ -92,8 +92,8 @@ LE-PHB <xref target="RFC8622"/>
 
     </section>
 
-    <section>
-      <name>Updates to RFC ...</name>
+    <section anchor="ops">
+      <name>Operational Considerations</name>
       <t>
         ...
       </t>
