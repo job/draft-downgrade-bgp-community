@@ -72,7 +72,7 @@ version="3">
     <section anchor="intro">
       <name>Introduction</name>
       <t>
-
+        
 LE-PHB <xref target="RFC8622"/>
 
       </t>
@@ -83,13 +83,17 @@ LE-PHB <xref target="RFC8622"/>
           The key words "<bcp14>MUST</bcp14>", "<bcp14>MUST NOT</bcp14>", "<bcp14>REQUIRED</bcp14>", "<bcp14>SHALL</bcp14>", "<bcp14>SHALL NOT</bcp14>", "<bcp14>SHOULD</bcp14>", "<bcp14>SHOULD NOT</bcp14>", "<bcp14>RECOMMENDED</bcp14>", "<bcp14>NOT RECOMMENDED</bcp14>", "<bcp14>MAY</bcp14>", and "<bcp14>OPTIONAL</bcp14>" in this document are to be interpreted as described in BCP&nbsp;14 <xref target="RFC2119"/> <xref target="RFC8174"/> when, and only when, they appear in all capitals, as shown here.
         </t>
        </section>
+    </section>
 
-      <section anchor="Related">
-        <name>Related Work</name>
-        <t>
-        </t>
-      </section>
-
+    <section anchor="community">
+      <name>The DOWNGRADE Community</name>
+      <t>
+        This document defines the use of a new well-known BGP transitive community, DOWNGRADE.
+      </t>
+      <t>
+        The semantics of this community allow a network to interpret the presence of this community as an advisory qualification to treat any traffic being sent towards the tagged prefix with lower precedence.
+        That is, in the case of congestion, "DOWNGRADE" tagged traffic <bcp14>SHOULD</bcp14> be dropped prior to dropping any other traffic.
+      </t>
     </section>
 
     <section anchor="ops">
