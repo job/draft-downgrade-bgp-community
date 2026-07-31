@@ -1,0 +1,34 @@
+# QPPB
+
+```
+community-set downgrade
+  downgrade ## FIXME
+end-set
+!
+route-policy qppb-v4
+  if community matches-any downgrade then
+    set qos-group 1
+  else
+    pass
+  endif
+end-policy
+!
+route-policy qppb-v6
+  if community matches-any downgrade then
+    set qos-group 1
+  else
+    pass
+  endif
+end-policy
+!
+router bgp ASN
+ address-family ipv4 unicast
+  table-policy qppb-v4
+ !
+ address-family ipv6 unicast
+  table-policy qppb-v6
+ !
+!
+```
+
+

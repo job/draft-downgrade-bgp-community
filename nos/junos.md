@@ -1,0 +1,79 @@
+# QPPB
+
+```
+forwarding-options {
+    family inet {
+        filter {
+            output ff-qppb-v4;
+        }
+    }
+    family inet6 {
+        filter {
+            output ff-qppb-v6;
+        }
+    }
+}
+
+routing-options {
+    forwarding-table {
+        export [ ft-qppb ];
+    }
+}
+
+policy-options {
+   community downgrade members downgrade;  ## FIXME
+   policy-statement ft-qppb {
+       term qppb-le {
+           from community downgrade;
+           then {
+               destination-class qppb-le;
+               accept;
+           }
+       }
+       term rest {
+           then {
+               accept;
+           }
+       }
+   }
+}
+
+firewall {
+    family inet {
+        filter ff-qppb-v4 {
+            term dcu {
+                from {
+                    destination-class qppb-le;
+                }
+                then {
+                    forwarding-class le;
+                    accept;
+                }
+            }
+            term rest {
+                then {
+                    accept;
+                }
+            }
+        }
+    }
+    family inet6 {
+        filter fw-qppb-v6 {
+            term dcu {
+                from {
+                    destination-class qppb-le;
+                }
+                then {
+                    forwarding-class le;
+                    accept;
+                }
+            }
+            term rest {
+                then {
+                    accept;
+                }
+            }
+        }
+    }
+}
+```
