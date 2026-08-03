@@ -1,10 +1,7 @@
-# QPPB
-
-```
 configure {
     policy-options {
         community "downgrade" {
-            member "downgrade" { }  ## FIXME
+            member "downgrade" { }  ## FIXME TBD IANA
         }
     }
     policy-statemeent "bgp-in" {
@@ -22,4 +19,3 @@ configure {
         }
     }
 }
-```

@@ -7,7 +7,7 @@ all: drafts
 drafts: $(NAME).txt
 
 $(NAME).txt: $(NAME).xml
-	xml2rfc $(NAME).xml --html --text
+	xml2rfc $(NAME).xml --html --text --allow-local-file-access
 
 clean:
 	rm -f *.html *.txt

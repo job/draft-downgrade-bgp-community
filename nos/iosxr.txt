@@ -1,8 +1,5 @@
-# QPPB
-
-```
 community-set downgrade
-  downgrade ## FIXME
+  downgrade  ## FIXME TBD IANA
 end-set
 !
 route-policy qppb-v4
@@ -29,6 +26,3 @@ router bgp ASN
   table-policy qppb-v6
  !
 !
-```
-
-

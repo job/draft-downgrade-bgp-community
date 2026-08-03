@@ -1,6 +1,3 @@
-# QPPB
-
-```
 forwarding-options {
     family inet {
         filter {
@@ -21,7 +18,7 @@ routing-options {
 }
 
 policy-options {
-   community downgrade members downgrade;  ## FIXME
+   community downgrade members downgrade;  ## FIXME TBD IANA
    policy-statement ft-qppb {
        term qppb-le {
            from community downgrade;
@@ -58,7 +55,7 @@ firewall {
         }
     }
     family inet6 {
-        filter fw-qppb-v6 {
+        filter ff-qppb-v6 {
             term dcu {
                 from {
                     destination-class qppb-le;
@@ -76,4 +73,3 @@ firewall {
         }
     }
 }
-```
