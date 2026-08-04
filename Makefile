@@ -13,4 +13,4 @@ clean:
 	rm -f *.html *.txt
 
 www: $(NAME).txt
-	cp $(NAME).exp.xml $(NAME).html $(NAME).xml $(NAME).txt ~/Downloads/
+	cp $(NAME).exp.xml $(NAME).html $(NAME).txt ~/Downloads/
