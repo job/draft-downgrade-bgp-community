@@ -1,5 +1,5 @@
 community-set downgrade
-  downgrade  ## FIXME TBD IANA
+  65535:TBD  ## FIXME TBD IANA
 end-set
 !
 route-policy qppb-v4

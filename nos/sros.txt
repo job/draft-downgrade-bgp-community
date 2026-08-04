@@ -1,7 +1,7 @@
 configure {
     policy-options {
         community "downgrade" {
-            member "downgrade" { }  ## FIXME TBD IANA
+            member "65535:TBD"  ## FIXME TBD IANA
         }
     }
     policy-statemeent "bgp-in" {

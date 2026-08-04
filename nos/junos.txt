@@ -18,7 +18,7 @@ routing-options {
 }
 
 policy-options {
-   community downgrade members downgrade;  ## FIXME TBD IANA
+   community downgrade members 65535:TBD;  ## FIXME TBD IANA
    policy-statement ft-qppb {
        term qppb-le {
            from community downgrade;
