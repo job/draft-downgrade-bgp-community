@@ -1,3 +1,5 @@
+<CODE BEGINS>
+
 configure {
     policy-options {
         community "downgrade" {
@@ -19,3 +21,5 @@ configure {
         }
     }
 }
+
+<CODE ENDS>

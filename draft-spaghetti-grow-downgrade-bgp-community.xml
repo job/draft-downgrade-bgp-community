@@ -215,17 +215,17 @@ version="3">
 
       <section toc="exclude">
         <name>HPE Juniper Junos</name>
-        <sourcecode src="nos/junos.txt"/>
+        <sourcecode type="pseudocode" src="nos/junos.txt"/>
       </section>
 
       <section toc="exclude">
         <name>Nokia SR-OS</name>
-        <sourcecode src="nos/sros.txt"/>
+        <sourcecode type="pseudocode" src="nos/sros.txt"/>
       </section>
 
       <section toc="exclude">
         <name>Cisco IOS-XR</name>
-        <sourcecode src="nos/iosxr.txt"/>
+        <sourcecode type="pseudocode" src="nos/iosxr.txt"/>
       </section>
 
     </section>
