@@ -191,6 +191,7 @@ version="3">
 
     </references>
 
+<!--
     <section anchor="acknowledgements">
       <name>Acknowledgements</name>
       <t>
@@ -201,6 +202,7 @@ version="3">
         for their review and feedback.
       </t>
     </section>
+-->
 
     <section anchor="examples">
       <name>Configuration Examples</name>
