@@ -78,7 +78,7 @@ version="3">
         From a timing perspective it is hard to use RTBH filtering with tactical precision.
       </t>
       <t>
-        This document proposes an different approach: rather than defenders requesting neighboring networks to discard traffic wholesale, defenders can request for deprioritization of selected traffic in the forwarding-plane.
+        This document proposes an different approach, the "downgrade" strategy: rather than defenders requesting neighboring networks to discard traffic wholesale, defenders can request for deprioritization of selected traffic in the forwarding-plane.
         The goal is to protect all other packet traffic from competition with the attack volume aggregate while not completely banning attack traffic from the network.
         The approach allows networks to protect themselves from attack traffic by providing relative preferential treatment to other traffic aggregates.
       </t>
@@ -87,7 +87,7 @@ version="3">
         It should also be noted that approach relies on there being at least some unused capacity during the attack.
       </t>
       <t>
-        This document specifies a standard well-known BGP community value for use in the global Internet routing system, describes operational considerations for mitigating through downgrading, and for illustration purposes contains some configuration examples.
+        This document specifies a standard well-known BGP community (<xref target="RFC1997"/>) value for use in the global Internet routing system, describes operational considerations for mitigating through downgrading, and for illustration purposes contains some configuration examples.
       </t>
 		
       <section anchor="reqs-lang">
@@ -111,23 +111,53 @@ version="3">
 
     <section anchor="ops">
       <name>Operational Considerations</name>
-      <t>
-        Operators <bcp14>SHOULD</bcp14> mark downgraded traffic with Differentiated Services Code Point (DSCP) Class Selector 1 (<tt>CS1</tt>) at the egress to the next network domain.
-        Such marking can help the defender in monitoring whether a lower-effort forwarding priority was applied.
-      </t>
-      <t>
-        The CS1 DSCP <tt>'000001'</tt> marking is also known as the Lower-Effort (LE) DSCP marking, see <xref target="RFC8622"/> for more considerations on a Lower-Effort Per-Hop Behavior (LE PHB) .
-      </t>
+
+      <section>
+        <name>Traffic Marking on Egress</name>
+        <t>
+          Operators <bcp14>SHOULD</bcp14> mark downgraded traffic with Differentiated Services Code Point (DSCP) Class Selector 1 (<tt>CS1</tt>) at the egress to the next network domain.
+          Such marking can help the defender in monitoring whether a lower-effort forwarding priority was applied.
+        </t>
+        <t>
+          The CS1 DSCP <tt>'000001'</tt> marking is also known as the Lower-Effort (LE) DSCP marking, see <xref target="RFC8622"/> for more considerations on a Lower-Effort Per-Hop Behavior (LE PHB) .
+        </t>
+      </section>
+
+      <section>
+        <name>Mitigation Duration</name>
+        <t>
+          The duration of attack mitigation measures using the aforementioned "downgrade" strategy should be proportional to the threat and <bcp14>SHOULD</bcp14> discontinued as soon as the attack has passed.
+        </t>
+      </section>
+
+      <section anchor="rs">
+        <name>Internet Exchange Route Server Transparency</name>
+        <t>
+          Internet Exchange (IX) Route Servers (RS) (<xref target="RFC7947"/>) <bcp14>SHOULD</bcp14> pass through the <tt>DOWNGRADE</tt> community transparently.
+          While IX RS themselves operate in the control-plane, the peers of the RS could benefit from receiving the <tt>DOWNGRADE</tt> community.
+        </t>
+      </section>
+
+      <section>
+        <name>Scope of Downgrade Routes</name>
+        <t>
+          Similar to how IX RS ought to pass through the <tt>BLACKHOLE</tt> community (see <xref target="rs"/>), the global Internet routing system as a whole likely benefits from downgrading close to the traffic source.
+          Operators <bcp14>SHOULD NOT</bcp14> remove the <tt>BLACKHOLE</tt> community from route announcements.
+        </t>
+      </section>
+
     </section>
 
     <section anchor="security">
       <name>Security Considerations</name>
       <t>
-        DoS attacks are pervasive and happen frequently in network operations.
-        Traditional mitigation techniques relying on traffic filtering tend to throw the baby out with the bathwater.
+        DoS attacks are a pervasive long-standing issue and happen frequently in network operations.
+        Traditional RTBH-based attack mitigation techniques rely on traffic discardure, which unfortunately throws the baby out with the bathwater.
+        In contrast, the aforementioned "downgrade" strategy aims to reduce collatoral damage by forwarding as much traffic as possible.
       </t>
       <t>
-        XXX: something about ensuring that the neighboring network is authorized to announce the DOWNGRADE tagged prefix
+        BGP announcements carrying the <tt>DOWNGRADE</tt> community should only be accepted and honored if the neighboring network is authorized to advertise the prefix.
+        The method of validating announcements is to be chosen according to the operator's routing policy.
       </t>
     </section>
 
@@ -148,12 +178,14 @@ version="3">
       <name>References</name>
       <references>
         <name>Normative References</name>
+	<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.1997.xml"/>
 	<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
 	<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
       </references>
 
       <references>
         <name>Informative References</name>
+	<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7947.xml"/>
 	<xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8622.xml"/>
       </references>
 
