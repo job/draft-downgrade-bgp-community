@@ -173,7 +173,10 @@ version="3">
     <section anchor="examples">
       <name>Configuration Examples</name>
       <t>
-        This section contains configuration examples for a number of networking and telecommunications equipment manufacturers to illustrate how a matchin a BGP community can cause lower priority forwarding.
+        This section contains configuration examples for a number of commonly used networking and telecommunications equipment manufacturers to illustrate how a matching on a BGP community can be used to lower priority in the forwarding-plane.
+      </t>
+      <t>
+        For the sake of brevity, these examples omit configuration stanzas for setting LE DSCP <tt>'000001'</tt> on network domain egress.
       </t>
 
       <section toc="exclude">
