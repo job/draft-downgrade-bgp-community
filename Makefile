@@ -7,10 +7,10 @@ all: drafts
 drafts: $(NAME).txt
 
 $(NAME).txt: $(NAME).xml
-	xml2rfc $(NAME).xml --html --text --allow-local-file-access
+	xml2rfc $(NAME).xml --html --text --allow-local-file-access --expand
 
 clean:
 	rm -f *.html *.txt
 
 www: $(NAME).txt
-	cp $(NAME).html $(NAME).xml $(NAME).txt ~/Downloads/
+	cp $(NAME).exp.xml $(NAME).html $(NAME).xml $(NAME).txt ~/Downloads/

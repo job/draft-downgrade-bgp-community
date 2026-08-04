@@ -32,7 +32,6 @@ version="3">
       <organization abbrev="BSD">BSD Software Development</organization>
       <address>
         <postal>
-         <postalLine>Amsterdam</postalLine>
          <postalLine>The Netherlands</postalLine>
         </postal>
         <email>job@bsd.nl</email>
