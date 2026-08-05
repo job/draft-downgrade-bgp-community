@@ -71,19 +71,20 @@ version="3">
     <section anchor="intro">
       <name>Introduction</name>
       <t>
-        Denial of Service (DoS) attacks are a common occurance and effective mitigation continues to pose a challenge to network operators globally.
-        The traditional approach of signaling neighboring networks to not send <em>any</em> traffic towards the IP prefix under duress poses a significant dilemma: without filtering the destination network segment as a whole suffers from attack, conversely, the use of RTBH filtering itself is an extension of the attack as it causes reachability issues for the beset destination.
+        Denial of Service (DoS) attacks are a common occurrence, and effective mitigation continues to pose challenges to network operators globally.
+        The traditional approach of signaling neighboring networks to not send <em>any</em> traffic towards the IP prefix under duress poses a significant dilemma: without filtering the destination network segment as a whole suffers from attack.
+        Conversely, the use of RTBH filtering itself is an extension of the attack as it causes reachability issues for the beset destination.
         Even worse, reachability issues often persist beyond the actual attack, because RTBH filtering itself negatively impacts the defender's ability to observe the presence of attack traffic.
         From a timing perspective it is hard to use RTBH filtering with tactical precision.
       </t>
       <t>
-        This document proposes an different approach, the "downgrade" strategy: rather than defenders requesting neighboring networks to discard traffic wholesale, defenders can request for deprioritization of selected traffic in the forwarding-plane.
-        The goal is to protect all other packet traffic from competition with the attack volume aggregate while not completely banning attack traffic from the network.
-        The approach allows networks to protect themselves from attack traffic by providing relative preferential treatment to other traffic aggregates.
+        This document proposes a different approach, the "downgrade" strategy: rather than defenders requesting neighboring networks to discard traffic wholesale, defenders can request for deprioritization of selected traffic in the forwarding plane.
+        The goal is to protect all other packet traffic from competition with the attack volume aggregate, while not completely banning attack traffic from the network.
+        This approach allows networks to protect themselves from attack traffic by providing relative preferential treatment to other traffic aggregates.
       </t>
       <t>
         The aforementioned "downgrade" mitigation strategy does not fully resolve DoS attacks as the root cause remains unaddressed, but it might be a better practise than RTBH filtering.
-        It should also be noted that approach relies on there being at least some unused capacity during the attack.
+        It should also be noted that this approach relies on there being at least some unused capacity during the attack.
       </t>
       <t>
         This document specifies a standard well-known BGP community (<xref target="RFC1997"/>) value for use in the global Internet routing system, describes operational considerations for mitigating through downgrading, and for illustration purposes contains some configuration examples.
@@ -103,7 +104,7 @@ version="3">
         This document defines the use of a new well-known BGP transitive community, <tt>DOWNGRADE</tt>.
       </t>
       <t>
-        The semantics of this community allow a network to interpret the presence of this community as an advisory qualification to treat any traffic being sent towards the tagged prefix with lower precedence.
+        The semantics of this community allow a network to interpret its presence as an advisory qualification to treat any traffic being sent towards the tagged prefix with lower precedence.
         That is, in the case of congestion, <tt>DOWNGRADE</tt> tagged traffic <bcp14>SHOULD</bcp14> be dropped prior to dropping any other traffic.
       </t>
     </section>
@@ -118,21 +119,21 @@ version="3">
           Such marking can help the defender in monitoring whether a lower-effort forwarding priority was applied.
         </t>
         <t>
-          The CS1 DSCP <tt>'000001'</tt> marking is also known as the Lower-Effort (LE) DSCP marking, see <xref target="RFC8622"/> for more considerations on a Lower-Effort Per-Hop Behavior (LE PHB) .
+          The CS1 DSCP <tt>'000001'</tt> marking is also known as the Lower-Effort (LE) DSCP marking, see <xref target="RFC8622"/> for more considerations on a Lower-Effort Per-Hop Behavior (LE PHB).
         </t>
       </section>
 
       <section>
         <name>Mitigation Duration</name>
         <t>
-          The duration of attack mitigation measures using the aforementioned "downgrade" strategy should be proportional to the threat and <bcp14>SHOULD</bcp14> discontinued as soon as the attack has passed.
+          The duration of attack mitigation measures using the aforementioned "downgrade" strategy should be proportional to the threat and <bcp14>SHOULD</bcp14> be discontinued as soon as the attack has passed.
         </t>
       </section>
 
       <section anchor="rs">
         <name>Internet Exchange Route Server Transparency</name>
         <t>
-          Internet Exchange (IX) Route Servers (RS) (<xref target="RFC7947"/>) <bcp14>SHOULD</bcp14> pass through the <tt>DOWNGRADE</tt> community transparently.
+          Internet Exchange (IX) Route Servers (RS) (<xref target="RFC7947"/>) <bcp14>SHOULD</bcp14> redistribute the <tt>DOWNGRADE</tt> community transparently to their peers.
           While IX RS themselves operate in the control-plane, the peers of the RS could benefit from receiving the <tt>DOWNGRADE</tt> community.
         </t>
       </section>
@@ -206,7 +207,7 @@ version="3">
     <section anchor="examples">
       <name>Configuration Examples</name>
       <t>
-        This section contains configuration examples for a number of commonly used networking and telecommunications equipment manufacturers to illustrate how matching on a BGP community can be used to lower priority in the forwarding-plane.
+        This section contains configuration examples for a number of commonly used networking and telecommunications equipment manufacturers to illustrate how matching on a BGP community can be used to lower priority in the forwarding plane.
       </t>
       <t>
         For the sake of brevity, these examples omit configuration stanzas for setting LE DSCP <tt>'000001'</tt> on network domain egress.
