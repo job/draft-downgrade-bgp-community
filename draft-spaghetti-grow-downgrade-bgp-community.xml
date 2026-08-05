@@ -141,8 +141,8 @@ version="3">
       <section>
         <name>Scope of Downgrade Routes</name>
         <t>
-          Similar to how IX RS ought to pass through the <tt>BLACKHOLE</tt> community (see <xref target="rs"/>), the global Internet routing system as a whole likely benefits from downgrading close to the traffic source.
-          Operators <bcp14>SHOULD NOT</bcp14> remove the <tt>BLACKHOLE</tt> community from route announcements.
+          Similar to how IX RS ought to pass through the <tt>DOWNGRADE</tt> community (see <xref target="rs"/>), the global Internet routing system as a whole likely benefits from downgrading close to the traffic source.
+          Operators <bcp14>SHOULD NOT</bcp14> remove the <tt>DOWNGRADE</tt> community from route announcements.
         </t>
       </section>
 
@@ -195,11 +195,8 @@ version="3">
       <name>Acknowledgements</name>
       <t>
         The authors wish to thank <contact fullname="Massimiliano Stucchi"/>
-<!--
-        , <contact fullname="..."/>,
         and
-        <contact fullname="..."/>
--->
+	<contact fullname="Bryton Herdes"/>
         for their review and feedback.
       </t>
     </section>
