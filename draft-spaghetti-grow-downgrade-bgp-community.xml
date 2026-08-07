@@ -152,7 +152,7 @@ version="3">
       <name>Security Considerations</name>
       <t>
         DoS attacks are a pervasive long-standing issue and happen frequently in network operations.
-        Traditional RTBH-based attack mitigation techniques rely on traffic discardure, which unfortunately throws the baby out with the bathwater.
+        Traditional RTBH-based attack mitigation techniques rely on indiscriminate traffic discardure and while this does eliminate unwanted attack traffic, it also disrupts valuable non-attack traffic as an unfortunate side-effect.
         In contrast, the aforementioned "downgrade" strategy aims to reduce collatoral damage by forwarding as much traffic as possible.
       </t>
       <t>
