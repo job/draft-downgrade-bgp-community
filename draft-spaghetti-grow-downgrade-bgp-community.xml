@@ -115,11 +115,11 @@ version="3">
       <section>
         <name>Traffic Marking on Egress</name>
         <t>
-          Operators <bcp14>SHOULD</bcp14> mark downgraded traffic with Differentiated Services Code Point (DSCP) Class Selector 1 (<tt>CS1</tt>) at the egress to the next network domain.
-          Such marking can help the defender in monitoring whether a lower-effort forwarding priority was applied.
+          Operators <bcp14>SHOULD</bcp14> mark downgraded traffic with the Lower-Effort (LE) Differentiated Services Code Point (DSCP) <tt>'000001'</tt> at the egress to the next network domain.
+          Such marking can help the defender monitor whether lower-effort forwarding treatment was applied.
         </t>
         <t>
-          The CS1 DSCP <tt>'000001'</tt> marking is also known as the Lower-Effort (LE) DSCP marking, see <xref target="RFC8622"/> for more considerations on a Lower-Effort Per-Hop Behavior (LE PHB).
+          See <xref target="RFC8622"/> for additional considerations regarding the Lower-Effort Per-Hop Behavior (LE PHB).
         </t>
       </section>
 
@@ -153,10 +153,10 @@ version="3">
       <t>
         DoS attacks are a pervasive long-standing issue and happen frequently in network operations.
         Traditional RTBH-based attack mitigation techniques rely on indiscriminate traffic discardure and while this does eliminate unwanted attack traffic, it also disrupts valuable non-attack traffic as an unfortunate side-effect.
-        In contrast, the aforementioned "downgrade" strategy aims to reduce collatoral damage by forwarding as much traffic as possible.
+        In contrast, the aforementioned "downgrade" strategy aims to reduce collateral damage by forwarding as much traffic as possible.
       </t>
       <t>
-        BGP announcements carrying the <tt>DOWNGRADE</tt> community should only be accepted and honored if the neighboring network is authorized to advertise the prefix.
+        BGP announcements carrying the <tt>DOWNGRADE</tt> community <bcp14>SHOULD</bcp14> be accepted and honored only if the neighboring network is authorized to advertise the prefix.
         The method of validating announcements is to be chosen according to the operator's routing policy.
       </t>
     </section>
