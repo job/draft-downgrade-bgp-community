@@ -6,7 +6,7 @@ configure {
             member "65535:TBD"  ## FIXME TBD IANA
         }
     }
-    policy-statemeent "bgp-in" {
+    policy-statement "bgp-in" {
         entry 100 {
             from {
                 community {
