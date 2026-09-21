@@ -1,4 +1,4 @@
-NAME=draft-spaghetti-grow-downgrade-bgp-community
+NAME=draft-ietf-grow-downgrade-bgp-community
 
 .PHONY: all
 all: drafts
