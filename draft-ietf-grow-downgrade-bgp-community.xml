@@ -164,10 +164,10 @@ version="3">
     <section anchor="iana">
       <name>IANA Considerations</name>
       <t>
-        Through this document IANA is requested to register in the "BGP Well-known Communities" registry as follows:
+        IANA has registered in the "BGP Well-known Communities" registry as follows:
       </t>
       <t>
-        <tt>DOWNGRADE (= 0xFFFFTBD)</tt>
+        <tt>DOWNGRADE (= 0xFFFF000A)</tt>
       </t>
     </section>
 
